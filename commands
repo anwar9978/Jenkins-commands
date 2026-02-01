@@ -1,0 +1,107 @@
+# User specific environment and startup programs
+JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto.x86_64
+MAVEN_HOME=/opt/maven
+PATH=$HOME/bin:$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH
+export PATH
+
+#
+#History
+1  free sh-
+    2  free -h
+    3  yum install git -y
+    4  yum install java-21* -y
+    5  java --version
+    6  which java
+    7  cd /opt/
+    8  wget https://dlcdn.apache.org/maven/maven-3/3.9.12/binaries/apache-maven-3.9.12-bin.tar.gz
+    9  ls
+   10  cd
+   11  yum install tree -y
+   12  cd /opt/
+   13  tree
+   14  ls
+   15  tar -xvzf apache-maven-3.9.12-bin.tar.gz
+   16  ls
+   17  mv apache-maven-3.9.12 maven
+   18  ls
+   19  cd maven/
+   20  ls
+   21  cd bin
+   22  ls
+   23  which maven
+   24  cd
+   25  ls
+   26  java --version
+   27  readlink -f $(which java)
+   28  which java
+   29  echo $JAVA_HOME
+   30  readlink -f $(which maven)
+   31  which mvn
+   32  mvn --v
+   33  mvn --version
+   34  maven --version
+   35  find / -type d --name maven
+   36  find / -type d -name maven
+   37  readlink -f $(which java)
+   38  find / -type d -name maven
+   39  export JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto.x86_64
+   40  export PATH=$JAVA_HOME/bin:$PATH
+   41  export M2_HOME=/opt/maven
+   42  export PATH=$M2_HOME/bin:$PATH
+   43  source ~/.bash_profile
+   44  ls -la
+   45  cat .bash_profile
+   46  cat .bashrc
+   47  echo $JAVA_HOME
+   48  source ~/.bashrc
+   49  cat .bashrc
+   50  vi .bash_profile
+   51  readlink -f $(which java)
+   52  find / -type d -name maven
+   53  vi .bash_profile
+   54  la -la
+   55  ls -a
+   56  cat .bash_profile
+   57  echo $PATH
+   58  echo $JAVA_HOME
+   59  source ~/.bash_profile
+   60  sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/rpm-stable/jenkins.repo
+   61  yum upgrade
+   62  yum install jenkins -y
+   63  systemctl start jenkins
+   64  systemctl status jenkins
+   65  systemctl enable jenkins
+   66  which jenkins
+   67  readlink -f $(which jenkins)
+   68  echo $JENKINS_HOME
+   69  cat /etc/sysconfig/jenkins | grep JENKINS_HOME
+   70  cd /var/lib/jenkins/
+   71  ls
+   72  cd secrets/
+   73  ls
+   74  cat initialAdminPassword
+   75  cd ../..
+   76  cd jenkins/
+   77  tree
+   78  ls
+   79  ls -a
+   80  cd
+   81  df -h
+   82  sudo yum clean all
+   83  sudo rm -rf /var/cache/yum
+   84  df -h
+   85  sudo mount -o remount,size=2G /tmp
+   86  df -h
+   87  which git
+   88  git clone https://github.com/anwar9978/Jenkins-commands.git
+   89  ls
+   90  cd Jenkins-commands/
+   91  cd
+   92  cat .bash_profile
+   93  cd Jenkins-commands/
+   94  CAT > commands
+   95  cat > commands
+   96  cat commands
+   97  cd
+   98  history
+
