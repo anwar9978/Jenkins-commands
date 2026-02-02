@@ -1,0 +1,63 @@
+def registry = 'https://trial1zy574.jfrog.io'
+
+pipeline {
+    agent any
+
+    environment {
+        PATH = "/opt/maven/bin:$PATH"
+    }
+
+    stages {
+
+        stage("Build & Test") {
+            steps {
+                echo "----------- Build & Test started ----------"
+                sh 'mvn clean verify'
+                echo "----------- Build & Test completed ----------"
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('saidemy-sonarqube-server') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
+
+        stage("Publish to JFrog Artifactory") {
+            when {
+                branch 'main'
+            }
+            steps {
+                script {
+                    echo '<--------------- JFrog Publish Started --------------->'
+
+                    def server = Artifactory.newServer(
+                        url: registry + "/artifactory",
+                        credentialsId: "artifact-cred"
+                    )
+
+                    def buildInfo = Artifactory.newBuildInfo()
+                    buildInfo.name = "IRCTC"
+                    buildInfo.number = env.BUILD_NUMBER
+
+                    def uploadSpec = """{
+                        "files": [
+                          {
+                            "pattern": "target/*.jar",
+                            "target": "sai-libs-release-local/",
+                            "flat": "true"
+                          }
+                        ]
+                    }"""
+
+                    server.upload(uploadSpec, buildInfo)
+                    server.publishBuildInfo(buildInfo)
+
+                    echo '<--------------- JFrog Publish Completed --------------->'
+                }
+            }
+        }
+    }
+}
