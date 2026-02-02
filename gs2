@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                sh 'date'
+                sh 'pwd'
+            }
+        }
+        stage('build2') {
+            steps {
+                sh '''
+                ls
+                date
+                cal 2026
+                '''
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo "deploying"
+            }
+        }
+    }
+}
